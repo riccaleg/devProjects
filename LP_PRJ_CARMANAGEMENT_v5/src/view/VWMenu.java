@@ -302,7 +302,7 @@ public class VWMenu extends JFrame {
 	// CADASTROS
 	private void menuBarItemCadCar() throws ParseException, SQLException {
 		if (JFVWCadCarros == null)
-			JFVWCadCarros = new VWCadastroCarro(VWCadastroCarro.ALTERAR);
+			JFVWCadCarros = new VWCadastroCarro(VWCadastroCarro.INSERIR);
 		JFVWCadCarros.setVisible(true);
 		;
 
