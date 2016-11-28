@@ -1,0 +1,11 @@
+CREATE TABLE MANUTENCAO (
+	man_codigo INT AUTO_INCREMENT PRIMARY KEY,
+	man_nomeServico VARCHAR(60) NULL,
+	man_dataValidade DATE NULL,
+	man_kmValidade INT NULL,
+	man_hodometro INT NULL,
+	man_dataManutencao DATE NULL,
+	man_valorPago FLOAT NULL,
+	man_local VARCHAR(50) NULL,
+	man_anotacoes VARCHAR(100) NULL,
+	);

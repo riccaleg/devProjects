@@ -1,0 +1,22 @@
+
+
+CREATE DATABASE carmanagement;
+USE  carmanagement;
+
+CREATE TABLE CARRO (
+	car_codigo INT AUTO_INCREMENT PRIMARY KEY,
+	car_marca VARCHAR(20) NULL,
+	car_modelo VARCHAR(20) NULL,
+	car_placa VARCHAR(7) NULL,
+	car_anoModelo INT NULL,
+	car_anoFabricacao INT NULL,
+	car_numeroChassi VARCHAR(16) NULL,
+	car_renavam LONG NULL,
+	car_qtdPortas INT NULL,
+	car_qtdPassageiros INT NULL,
+	car_capacidadeTanque FLOAT NULL
+	);
+	
+	
+
+

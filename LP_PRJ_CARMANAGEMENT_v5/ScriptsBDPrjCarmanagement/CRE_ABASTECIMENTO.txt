@@ -1,0 +1,8 @@
+CREATE TABLE ABASTECIMENTO (
+	aba_codigo INT AUTO_INCREMENT PRIMARY KEY,
+	aba_valorTotal FLOAT NULL,
+	aba_data DATE NULL,
+	aba_hodometro INT NULL,
+	aba_valorLitro FLOAT NULL,
+	aba_local VARCHAR(15) NULL
+	);

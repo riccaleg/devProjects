@@ -1,0 +1,152 @@
+USE carmanagement;
+
+DROP TABLE IF EXISTS despesa;
+DROP TABLE IF EXISTS multa;
+DROP TABLE IF EXISTS imposto;
+DROP TABLE IF EXISTS imp_tipo;
+DROP TABLE IF EXISTS seguro;
+DROP TABLE IF EXISTS financiamento;
+DROP TABLE IF EXISTS manutencao;
+DROP TABLE IF EXISTS abastecimento;
+DROP TABLE IF EXISTS pagamento;
+DROP TABLE IF EXISTS carro_combustivel;
+DROP TABLE IF EXISTS carro;
+DROP TABLE IF EXISTS combustivel;
+
+CREATE TABLE IF NOT EXISTS combustivel (
+    com_codigo INT PRIMARY KEY,
+    com_descricao VARCHAR(40) NULL
+);
+
+CREATE TABLE IF NOT EXISTS carro (
+    car_codigo INT PRIMARY KEY,
+    car_marca VARCHAR(20) NULL,
+    car_modelo VARCHAR(20) NULL,
+    car_placa VARCHAR(7) NULL,
+    car_anoModelo INT NULL,
+    car_anoFabricacao INT NULL,
+    car_numeroChassi VARCHAR(16) NULL,
+    car_renavam VARCHAR(11) NULL,
+    car_qtdPortas INT NULL,
+    car_qtdPassageiros INT NULL,
+    car_capacidadeTanque FLOAT NULL
+);
+
+CREATE TABLE IF NOT EXISTS carro_combustivel (
+	caco_car_codigo INT NOT NULL,
+	caco_com_codigo INT NOT NULL,
+	PRIMARY KEY (caco_car_codigo, caco_com_codigo)
+);
+
+ALTER TABLE carro_combustivel ADD FOREIGN KEY (caco_car_codigo) REFERENCES carro(car_codigo);
+ALTER TABLE carro_combustivel ADD FOREIGN KEY (caco_com_codigo) REFERENCES combustivel(com_codigo);
+
+CREATE TABLE IF NOT EXISTS pagamento (
+    pag_codigo INT PRIMARY KEY,
+    pag_descricao VARCHAR(50) NULL
+);
+
+CREATE TABLE IF NOT EXISTS abastecimento (
+    aba_codigo INT PRIMARY KEY,
+	aba_data DATE NULL,
+	aba_hodometro INT NULL,
+	aba_valorLitro FLOAT NULL,
+    aba_valorTotal FLOAT NULL,
+    aba_car_codigo INT NOT NULL,
+    aba_pag_codigo INT NOT NULL
+);
+
+ALTER TABLE abastecimento ADD FOREIGN KEY (aba_car_codigo) REFERENCES carro(car_codigo);
+ALTER TABLE abastecimento ADD FOREIGN KEY (aba_pag_codigo) REFERENCES pagamento(pag_codigo);
+	
+CREATE TABLE IF NOT EXISTS manutencao (
+    man_codigo INT PRIMARY KEY,
+    man_nomeServico VARCHAR(60) NULL,
+	man_dataManutencao DATE NULL,
+    man_dataValidade DATE NULL,
+    man_kmValidade INT NULL,
+    man_hodometro INT NULL,
+    man_valorPago FLOAT NULL,
+    man_anotacoes VARCHAR(100) NULL,
+    man_car_codigo INT NOT NULL,
+    man_pag_codigo INT NOT NULL
+);
+
+ALTER TABLE manutencao ADD FOREIGN KEY (man_car_codigo) REFERENCES carro(car_codigo);
+ALTER TABLE manutencao ADD FOREIGN KEY (man_pag_codigo) REFERENCES pagamento(pag_codigo);
+
+CREATE TABLE IF NOT EXISTS financiamento (
+    fin_codigo INT PRIMARY KEY,
+    fin_jurosMensal FLOAT NULL,
+    fin_valorSemJuros FLOAT NULL,
+    fin_valorParcela FLOAT NULL,
+    fin_qtdParcelas INT NULL,
+    fin_qtdParcelasPagas INT NULL,
+	fin_dataPrimeiraParcela DATE NULL,
+    fin_car_codigo INT NOT NULL
+);
+
+ALTER TABLE financiamento ADD FOREIGN KEY (fin_car_codigo) REFERENCES carro(car_codigo);
+
+CREATE TABLE IF NOT EXISTS seguro (
+    seg_codigo INT PRIMARY KEY,
+    seg_nomeSeguradora VARCHAR(20) NULL,
+    seg_numApolice INT NULL,
+	seg_valor FLOAT NULL,
+    seg_valorParcela FLOAT NULL,
+    seg_qtdParcelas INT NULL,
+    seg_qtdParcelasPagas INT NULL,
+	seg_dataValidade DATE NULL,
+    seg_dataPrimeiraParcela DATE NULL,
+    seg_car_codigo INT NOT NULL
+);
+
+ALTER TABLE seguro ADD FOREIGN KEY (seg_car_codigo) REFERENCES carro(car_codigo);
+
+CREATE TABLE IF NOT EXISTS imp_tipo (
+    imp_tipo_codigo INT PRIMARY KEY,
+    imp_tipo_descricao VARCHAR(20) NULL
+);
+	
+CREATE TABLE IF NOT EXISTS imposto (
+    imp_codigo INT PRIMARY KEY,
+    imp_ano INT NULL,
+    imp_valorImposto FLOAT NULL,
+    imp_valorParcela FLOAT NULL,
+    imp_qtdParcelas INT NULL,
+    imp_qtdParcelasPagas INT NULL,
+    imp_dataPrimeiraParcela DATE NULL,
+    imp_tipo_codigo INT NOT NULL,
+    imp_car_codigo INT NOT NULL
+);
+
+ALTER TABLE imposto ADD FOREIGN KEY (imp_tipo_codigo) REFERENCES imp_tipo(imp_tipo_codigo);
+ALTER TABLE imposto ADD FOREIGN KEY (imp_car_codigo) REFERENCES carro(car_codigo);
+	
+CREATE TABLE IF NOT EXISTS multa (
+    mul_codigo INT PRIMARY KEY,
+	mul_valor FLOAT NULL,
+	mul_descricao VARCHAR(40) NULL,
+    mul_dataInfracao DATE NULL,
+    mul_dataVencimento DATE NULL,
+    mul_car_codigo INT NOT NULL
+);
+
+ALTER TABLE multa ADD FOREIGN KEY (mul_car_codigo) REFERENCES carro(car_codigo);
+	
+CREATE TABLE IF NOT EXISTS despesa (
+    des_codigo INT PRIMARY KEY,
+    des_data DATE NULL,
+    des_custo FLOAT NULL,
+    des_car_codigo INT NOT NULL,
+    des_pag_codigo INT NOT NULL
+);
+
+ALTER TABLE despesa ADD FOREIGN KEY (des_car_codigo) REFERENCES carro(car_codigo);
+ALTER TABLE despesa ADD FOREIGN KEY (des_pag_codigo) REFERENCES pagamento(pag_codigo);
+
+INSERT INTO combustivel (com_codigo, com_descricao) VALUES (1, 'Gasolina Comum'), (2, 'Gasolina Aditivada'), (3, 'Gasolina Premium'), (4, 'Etanol Comum'), (5, 'Etanol Aditivado'), (6, 'Diesel Comum'), (7, 'Diesel S10'), (8, 'GNV');
+
+INSERT INTO pagamento (pag_codigo, pag_descricao) VALUES (1, 'Indeterminado'), (2, 'Dinheiro'), (3, 'Cartão de Crédito'), (4, 'Cartão de Débito'), (5, 'Boleto Bancário'), (6, 'Transferência Eletrônica'), (7, 'Débito Automático'), (8, 'Depósito em Conta'), (9, 'Cheque'), (10, 'Outros');
+
+INSERT INTO imp_tipo (imp_tipo_codigo, imp_tipo_descricao) VALUES (1, 'DPVAT'), (2, 'IPVA'), (3, 'Licenciamento');

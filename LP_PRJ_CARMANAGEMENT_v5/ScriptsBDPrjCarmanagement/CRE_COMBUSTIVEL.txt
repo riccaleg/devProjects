@@ -1,0 +1,6 @@
+CREATE TABLE COMBUSTIVEL(
+	com_codigo INT AUTO_INCREMENT PRIMARY KEY,
+	com_descricao VARCHAR(40) NULL,
+	caco_car_codigo INT NULL,
+	caco_com_codigo INT NULL
+	);
