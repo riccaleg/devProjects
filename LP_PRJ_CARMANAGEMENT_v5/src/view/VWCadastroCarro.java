@@ -41,7 +41,7 @@ public class VWCadastroCarro extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	// DECLARAÇÃO DE CONSTANTES
+	// DECLARAÇÃO DE CONSTANTES PARA MODOS
 	public static final int VISUALIZAR = 0;
 	public static final int ALTERAR = 1;
 	public static final int INSERIR = 2;
@@ -88,7 +88,7 @@ public class VWCadastroCarro extends JFrame {
 	private JTextField txtMarca = new JTextField();
 	private JTextField txtModelo = new JTextField();
 
-	// JTextArea
+	// JTEXTAREA
 	private JTextArea txtaDescCadCar = new JTextArea();
 
 	// ComboBox
