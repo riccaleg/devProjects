@@ -88,7 +88,7 @@ public class VWCadastroCarro extends JFrame {
 	private JTextField txtMarca = new JTextField();
 	private JTextField txtModelo = new JTextField();
 
-	// JTEXTAREA
+	// JTextArea
 	private JTextArea txtaDescCadCar = new JTextArea();
 
 	// ComboBox
