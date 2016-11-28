@@ -89,19 +89,18 @@ public class VWCadastroCarro extends JFrame {
 	private JTextField txtModelo = new JTextField();
 
 	// JTextArea
-	private JTextArea txtaDescCadCar = new JTextArea();
+	private JTextArea txtaDescCadCar = new JTextArea(); 
 
 	// ComboBox
 	private JComboBox<String> cboxTipoCombustivel = new JComboBox<String>();
 	private JComboBox<String> cboxCondutorCar = new JComboBox<String>();
-
 	// DECLARANDO BOTÕES DE AÇÃO
 	// Buttons
 	private JButton btnSalvar = new JButton("Salvar");
 	private JButton btnAlterar = new JButton("Alterar");
 	private JButton btnExcluir = new JButton("Excluir");
 	private JButton btnFechar = new JButton("Fechar");
-
+	
 	// DECLARANDO AGRUPADORES
 	// Panel's
 	private JScrollPane pnlScrTxtArea = new JScrollPane(txtaDescCadCar);

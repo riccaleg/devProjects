@@ -71,6 +71,7 @@ public class VWMenu extends JFrame {
 	private JLabel lblData = new JLabel("");
 	private JLabel lblHora = new JLabel("");
 
+	//CONSTRUTOR VWMenu
 	public VWMenu() {
 		super("CAR MANAGEMENT | Menu Principal");
 		setResizable(false);
