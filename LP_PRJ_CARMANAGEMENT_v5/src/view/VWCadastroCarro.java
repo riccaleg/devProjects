@@ -949,7 +949,8 @@ public class VWCadastroCarro extends JFrame {
 			lblSituacao.setText(e.getMessage());
 		}
 	}
-
+	
+	//MÉTODO PARA BOTÃO FECHAR
 	private void btnFechar_click() {
 		int resp = JOptionPane.showConfirmDialog(this, "Deseja realmente sair do módulo?", "Alerta",
 				JOptionPane.YES_NO_OPTION);
