@@ -45,9 +45,7 @@ public class MCondutor {
 		return this.sobrenome;
 	}
 	
-	public void setDataNascimento(Date dataNasciento) throws Exception {
-		if(dataNascimento == null)
-			throw new Exception("Data de Nasciemnto Inválida!");
+	public void setDataNascimento(Date dataNasciento) {
 		this.dataNascimento = dataNasciento;
 	}
 	public Date getDataNascimento() {
@@ -113,8 +111,6 @@ public class MCondutor {
 	}
 	
 	public void setDataCadastro(Date dataCadastro) throws Exception {
-		if(dataCadastro == null)
-			throw new Exception("Data de Cadastro Inválida!");
 		this.dataCadastro = dataCadastro;
 	}
 	public Date getDataCadastro() {

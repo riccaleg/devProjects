@@ -909,19 +909,14 @@ public class VWCadastroCarro extends JFrame {
 
 	// MÉTODO PARA ALTERAÇÂO DE DADOS | BOTÃO "ALTERAR"
 	private void btnAlterar_click() {
-		try {
-
-			int resp = JOptionPane.showConfirmDialog(this, "Confirma alteração?", "Alteração",
-					JOptionPane.YES_NO_OPTION);
-			if (resp == JOptionPane.YES_OPTION) {
-				// CHAMADA DA ALTERAÇÃO
-				// DÚVIDAS DE COMO COLOCAR MENSAGEM DE SUCESSO NA ALTERAÇÃO
-			}
-
-		} catch (Exception e) {
-			lblSituacao.setText(e.getMessage());
-
-		}
+		MODO = ALTERAR;
+		alterarCampos();
+	}
+	
+	// MÉTODO PARA CANCELAMENTO DE OPERAÇÕES
+	private void btnCancelar_click() {
+		limparItensTela();
+		MODO = VISUALIZAR;
 	}
 
 	// MÉTODO PARA EXCLUSÃO DE DADOS | BOTÃO "EXCLUIR"
@@ -931,8 +926,7 @@ public class VWCadastroCarro extends JFrame {
 			int resp = JOptionPane.showConfirmDialog(this, "Confirma a exclusão?", "Exclusão",
 					JOptionPane.YES_NO_OPTION);
 			if (resp == JOptionPane.YES_OPTION) {
-				// CHAMADA DA EXCLUSÃO
-				// DÚVIDAS DE COMO COLOCAR MENSAGEM DE SUCESSO NA EXCLUSÃO
+				DCarro.Excluir(CARRO);
 			}
 
 		} catch (Exception e) {
