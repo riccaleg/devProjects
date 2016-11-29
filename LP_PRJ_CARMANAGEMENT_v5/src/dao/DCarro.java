@@ -38,7 +38,7 @@ public class DCarro {
 		}
 	}
 	
-	public static MCarro BuscarCodigo(MCarro c) throws Exception{
+	public static MCarro BuscarCodigo(MCarro c) {
 		try {
 			Connection con = Conexao.getConexao();
 			ResultSet rs;
@@ -72,7 +72,7 @@ public class DCarro {
 			con.close();
 			return c;
 		} catch (Exception e) {
-			throw new Exception(e);
+			return c;
 		}
 	}
 	
