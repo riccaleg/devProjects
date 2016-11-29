@@ -111,7 +111,7 @@ public class VWCadastroCarro extends JFrame {
 	private JPanel pnlCaracteristicas = new JPanel();
 
 	public VWCadastroCarro(int modoFormulario, MCarro mcarro) throws Exception {
-		super("CAR MANAGEMENT | Cadastro de Carros");
+		super("CAR MANAGEMENT | Cadastro de Carros - Inclusão");
 
 		if (mcarro == null || mcarro.getCodigo() <= 0) {
 			JOptionPane.showMessageDialog(this, "Erro na chamada do formulário, contate o desenvolvedor!", "Erro",
@@ -120,6 +120,14 @@ public class VWCadastroCarro extends JFrame {
 			return;
 		}
 		
+
+
+
+		// CONFIGURA O MODO DE FUNCIONAMENTO DO FORMULÁRIO
+		CARRO = DCarro.BuscarCodigo(mcarro);
+		MODO = modoFormulario;
+		alterarCampos();
+
 		// IMPEDINDO REDIMENSIONAMENTO
 		this.setResizable(false);
 
@@ -246,6 +254,7 @@ public class VWCadastroCarro extends JFrame {
 			}
 		});
 		
+
 		MODO = modoFormulario;
 		
 		switch(MODO) {
@@ -268,14 +277,20 @@ public class VWCadastroCarro extends JFrame {
 		}
 
 		
+
 		dadosCarroParaFormulario();
-		
+
 		this.setVisible(true);
 	}
 
-	public VWCadastroCarro(int modoFormulario) throws Exception {
-		super("CAR MANAGEMENT | Cadastro de Carros");
-		
+
+	/**
+	 * @wbp.parser.constructor
+	 */
+	public VWCadastroCarro(int modoFormulario) throws ParseException {
+		super("CAR MANAGEMENT | Cadastro de Carros - Alteração/Visualização");
+
+	
 		if (modoFormulario != INSERIR) {
 			JOptionPane.showMessageDialog(this, "Erro na chamada do formulário, contate o desenvolvedor!", "Erro",
 					JOptionPane.ERROR_MESSAGE);
@@ -884,13 +899,14 @@ public class VWCadastroCarro extends JFrame {
 		}
 
 	}
-	
+	//MÉTODO PARA O BOTÃO INCLUIR
 	private void btnIncluir_click() {
 		limparItensTela();
 		MODO = INSERIR;
 		alterarCampos();
 	}
 
+	//MÉTODO PARA IMPAR ITENS DA TELA
 	private void limparItensTela() {
 		txtPlaca.setText("");
 		txtChassi.setText("");
@@ -934,7 +950,8 @@ public class VWCadastroCarro extends JFrame {
 			lblSituacao.setText(e.getMessage());
 		}
 	}
-
+	
+	//MÉTODO PARA BOTÃO FECHAR
 	private void btnFechar_click() {
 		int resp = JOptionPane.showConfirmDialog(this, "Deseja realmente sair do módulo?", "Alerta",
 				JOptionPane.YES_NO_OPTION);
@@ -953,7 +970,7 @@ public class VWCadastroCarro extends JFrame {
 					"Erro", JOptionPane.ERROR_MESSAGE);
 		}
 	}
-
+	//POPULAR COMBO CONDUTOR
 	private void popularCboxCondutorCar() {
 		try {
 			cboxCondutorCar.setModel(DCondutor.ListarComboBox());

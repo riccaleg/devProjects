@@ -245,7 +245,7 @@ public class VWMenu extends JFrame {
 		});
 
 		// SETANDO BARRA DE MENU
-		this.setJMenuBar(menu);
+		this.setJMenuBar(menu);		
 
 		// SETANDO TAMANHO DA TELA
 		this.setSize(new Dimension(800, 400));
@@ -303,6 +303,13 @@ public class VWMenu extends JFrame {
 
 	// CADASTROS
 	private void menuBarItemCadCar() throws ParseException, SQLException {
+
+		//if (JFVWCadCarros == null)
+			JFVWCadCarros = new VWCadastroCarro(VWCadastroCarro.ALTERAR);
+		//JFVWCadCarros.setVisible(true);
+		;
+
+
 		try {
 			MCarro c = new MCarro();
 			c.setCodigo(2);
@@ -310,6 +317,7 @@ public class VWMenu extends JFrame {
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(this, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
 		}
+
 	}
 
 	private void menuBarItemCadAba() throws ParseException, SQLException {
