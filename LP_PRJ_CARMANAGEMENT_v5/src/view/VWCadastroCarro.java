@@ -36,6 +36,7 @@ import dao.DCondutor;
 import model.MCarro;
 import model.MCombustivel;
 import model.MCondutor;
+import sun.util.BuddhistCalendar;
 
 public class VWCadastroCarro extends JFrame {
 
@@ -1120,7 +1121,7 @@ public class VWCadastroCarro extends JFrame {
 				break;
 			case ALTERAR:
 				limparItensTela();
-				
+				CARRO = DCarro.BuscarCodigo(CARRO);
 				
 				//CAMPOS
 				txtPlaca.setEditable(true);
