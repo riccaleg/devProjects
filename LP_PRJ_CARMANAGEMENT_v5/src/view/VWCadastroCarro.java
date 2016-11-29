@@ -1087,4 +1087,43 @@ public class VWCadastroCarro extends JFrame {
 				break;
 		}
 	}
+	
+	private void setModo(int modo) {
+		MODO = modo;
+		
+		switch(modo){
+			case INSERIR:
+				limparItensTela();
+				
+				//CAMPOS
+				txtPlaca.setEditable(true);
+				txtChassi.setEditable(true);
+				txtRenavam.setEditable(true);
+				cboxCondutorCar.setEnabled(true);
+				txtMarca.setEditable(true);
+				txtModelo.setEditable(true);
+				cboxTipoCombustivel.setEnabled(true);
+				txtAnoFabricacao.setEditable(true);
+				txtAnoModelo.setEditable(true);
+				txtQtdPortas.setEditable(true);
+				txtQtdPassageiros.setEditable(true);
+				txtCapTanque.setEditable(true);
+				txtaDescCadCar.setEditable(true);
+				
+				btnAlterar.setEnabled(false);
+				btnExcluir.setEnabled(false);
+				btnFechar.setEnabled(true);
+				
+				btnSalvar.setVisible(true);
+				btnIncluir.setVisible(false);
+				break;
+			case ALTERAR:
+				
+				
+				break;
+			case VISUALIZAR:
+				
+				break;
+		}
+	}
 }
