@@ -97,6 +97,7 @@ public class VWCadastroCarro extends JFrame {
 	// DECLARANDO BOTÕES DE AÇÃO
 	// Buttons
 	private JButton btnSalvar = new JButton("Salvar");
+	private JButton btnIncluir = new JButton("Incluir");
 	private JButton btnAlterar = new JButton("Alterar");
 	private JButton btnExcluir = new JButton("Excluir");
 	private JButton btnFechar = new JButton("Fechar");
@@ -111,13 +112,14 @@ public class VWCadastroCarro extends JFrame {
 	public VWCadastroCarro(int modoFormulario, MCarro mcarro) throws Exception {
 		super("CAR MANAGEMENT | Cadastro de Carros - Inclusão");
 
-		if (modoFormulario == INSERIR || mcarro == null || mcarro.getCodigo() <= 0) {
+		if (mcarro == null || mcarro.getCodigo() <= 0) {
 			JOptionPane.showMessageDialog(this, "Erro na chamada do formulário, contate o desenvolvedor!", "Erro",
 					JOptionPane.ERROR_MESSAGE);
 			this.dispose();
 			return;
 		}
 		
+<<<<<<< HEAD
 
 
 		// CONFIGURA O MODO DE FUNCIONAMENTO DO FORMULÁRIO
@@ -125,6 +127,8 @@ public class VWCadastroCarro extends JFrame {
 		MODO = modoFormulario;
 		alterarCampos();
 
+=======
+>>>>>>> branch 'devProjet' of https://github.com/wsamuelseles/devProjects/
 		// IMPEDINDO REDIMENSIONAMENTO
 		this.setResizable(false);
 
@@ -251,16 +255,51 @@ public class VWCadastroCarro extends JFrame {
 			}
 		});
 		
+<<<<<<< HEAD
+=======
+		MODO = modoFormulario;
+		
+		switch(MODO) {
+			case INSERIR:
+				limparItensTela();
+				alterarCampos();
+				break;
+			case ALTERAR:
+				CARRO = DCarro.BuscarCodigo(mcarro);
+				limparItensTela();
+				dadosCarroParaFormulario();
+				alterarCampos();
+				break;
+			case VISUALIZAR:
+				CARRO = DCarro.BuscarCodigo(mcarro);
+				limparItensTela();
+				dadosCarroParaFormulario();
+				alterarCampos();
+				break;
+		}
+
+		
+>>>>>>> branch 'devProjet' of https://github.com/wsamuelseles/devProjects/
 		dadosCarroParaFormulario();
+<<<<<<< HEAD
+=======
+		
+>>>>>>> branch 'devProjet' of https://github.com/wsamuelseles/devProjects/
 		this.setVisible(true);
 	}
 
+<<<<<<< HEAD
 	/**
 	 * @wbp.parser.constructor
 	 */
 	public VWCadastroCarro(int modoFormulario) throws ParseException {
 		super("CAR MANAGEMENT | Cadastro de Carros - Alteração/Visualização");
 
+=======
+	public VWCadastroCarro(int modoFormulario) throws Exception {
+		super("CAR MANAGEMENT | Cadastro de Carros");
+		
+>>>>>>> branch 'devProjet' of https://github.com/wsamuelseles/devProjects/
 		if (modoFormulario != INSERIR) {
 			JOptionPane.showMessageDialog(this, "Erro na chamada do formulário, contate o desenvolvedor!", "Erro",
 					JOptionPane.ERROR_MESSAGE);
@@ -269,6 +308,8 @@ public class VWCadastroCarro extends JFrame {
 		}
 
 		MODO = modoFormulario;
+		
+		alterarCampos();
 
 		// IMPEDINDO REDIMENSIONAMENTO
 		this.setResizable(false);
@@ -415,7 +456,11 @@ public class VWCadastroCarro extends JFrame {
 				}
 			}
 		});
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> branch 'devProjet' of https://github.com/wsamuelseles/devProjects/
 		this.setVisible(true);
 	}
 
@@ -435,6 +480,7 @@ public class VWCadastroCarro extends JFrame {
 
 		// ADICIONANDO BOTÕES NA TELA
 		getContentPane().add(btnSalvar);
+		getContentPane().add(btnIncluir);
 		getContentPane().add(btnAlterar);
 		getContentPane().add(btnExcluir);
 		getContentPane().add(btnFechar);
@@ -631,19 +677,7 @@ public class VWCadastroCarro extends JFrame {
 		cboxTipoCombustivel.setBounds(623, 55, 151, 22);
 		// RETORNANDO ITENS DO BANCO NO COMBO "COMBUSTÍVEL"
 		popularCboxTipoCombustivel();
-
-		/*
-		 * ITENS TESTE ** cboxTipoCombustivel.addItem("Álcool");
-		 * cboxTipoCombustivel.addItem("Gasolina");
-		 * cboxTipoCombustivel.addItem("Flex");
-		 * cboxTipoCombustivel.addItem("Diesel");
-		 * cboxTipoCombustivel.addItem("Teste I");
-		 * cboxTipoCombustivel.addItem("Teste II");
-		 * cboxTipoCombustivel.addItem("Teste III");
-		 * cboxTipoCombustivel.addItem("Teste IV");
-		 * cboxTipoCombustivel.addItem("Teste V");
-		 */
-
+		
 		// COMBO "CONDUTOR"
 		cboxCondutorCar.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		cboxCondutorCar.setBackground(Color.WHITE);
@@ -683,6 +717,10 @@ public class VWCadastroCarro extends JFrame {
 		// BOTÃO "SALVAR"
 		btnSalvar.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		btnSalvar.setBounds(216, 489, 76, 23);
+		
+		//BOTÃO "NOVO"
+		btnIncluir.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		btnIncluir.setBounds(216, 489, 76, 23);
 
 		// BOTÃO "ALTERAR"
 		btnAlterar.setFont(new Font("Segoe UI", Font.PLAIN, 12));
@@ -702,6 +740,7 @@ public class VWCadastroCarro extends JFrame {
 		ToolTipManager.sharedInstance().setInitialDelay(100);
 		ToolTipManager.sharedInstance().setDismissDelay(8000);
 		btnSalvar.setToolTipText("Salvar dados");
+		btnIncluir.setToolTipText("Novo Carro");
 		btnAlterar.setToolTipText("Alterar dados");
 		btnExcluir.setToolTipText("Excluir dados");
 		btnFechar.setToolTipText("Fechar módulo");
@@ -736,6 +775,13 @@ public class VWCadastroCarro extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				btnSalvar_click();
+			}
+		});
+		
+		btnIncluir.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				btnIncluir_click();
 			}
 		});
 
@@ -842,40 +888,35 @@ public class VWCadastroCarro extends JFrame {
 
 			/* CHAMADA DA INCLUSÃO */
 
-			MCarro mcarro = new MCarro();
-			MCombustivel mcombustivel = new MCombustivel();
-			MCondutor mcondutor = new MCondutor();
-
-			mcondutor.setNomeCompleto(cboxCondutorCar.getSelectedItem().toString());
-			mcondutor = DCondutor.GetIdByNomeCompleto(mcondutor);
-			mcarro.setCon_codigo(mcondutor.getCodigo());
-			mcarro.setPlaca(txtPlaca.getText());
-			mcarro.setNumeroChassi(txtChassi.getText());
-			mcarro.setRenavam(txtRenavam.getText());
-			mcarro.setMarca(txtMarca.getText());
-			mcarro.setModelo(txtModelo.getText());
-			mcombustivel.setDescricao(cboxTipoCombustivel.getSelectedItem().toString());
-			mcombustivel = DCombustivel.GetIdByDescricao(mcombustivel);
-			mcarro.setCom_codigo(mcombustivel.getCodigo());
-			mcarro.setAnoFabricacao(Integer.parseInt(txtAnoFabricacao.getText()));
-			mcarro.setAnoModelo(Integer.parseInt(txtAnoModelo.getText()));
-			mcarro.setQtdPortas(Integer.parseInt(txtQtdPortas.getText()));
-			mcarro.setQtdPassageiros(Integer.parseInt(txtQtdPassageiros.getText()));
-			mcarro.setCapacidadeTanque(Integer.parseInt(txtCapTanque.getText()));
-			mcarro.setDescricao(txtaDescCadCar.getText());
-
-			DCarro.Inserir(mcarro);
+			dadosFormularioParaCarro();
+			switch(MODO) {
+				case INSERIR:
+					DCarro.Inserir(CARRO);
+					break;
+				case ALTERAR:
+					DCarro.Alterar(CARRO);
+					break;
+			}
 
 			// SE TUDO OCORRER OK - CONFIRMAÇÃO DE INCLUSÃO
 			JOptionPane.showMessageDialog(this, "Carro inserido com sucesso!", "Sucesso",
 					JOptionPane.INFORMATION_MESSAGE);
 			// DEPOIS DE INSERIDO, O FORMULÁRIO É LIMPO
 			limparItensTela();
-
+			
+			MODO = VISUALIZAR;
+			dadosCarroParaFormulario();
+			alterarCampos();
 		} catch (Exception e) {
 			lblSituacao.setText(e.getMessage());
 		}
 
+	}
+	
+	private void btnIncluir_click() {
+		limparItensTela();
+		MODO = INSERIR;
+		alterarCampos();
 	}
 
 	private void limparItensTela() {
@@ -955,9 +996,9 @@ public class VWCadastroCarro extends JFrame {
 		}
 	}
 
+	// POPULA O FORMULÁRIO COM OS DADOS DO OBJETO CARRO
 	private void dadosCarroParaFormulario() {
 		try {
-			// POPULA O FORMULÁRIO COM OS DADOS DO CARRO RECEBIDO;
 			MCondutor mcondutor = new MCondutor();
 
 			mcondutor.setCodigo(CARRO.getCon_codigo());
@@ -981,24 +1022,104 @@ public class VWCadastroCarro extends JFrame {
 			JOptionPane.showMessageDialog(this, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
 		}
 	}
+	
+	// POPULA O OBJETO CARRO COM OS DADOS DO FORMULÁRIO
+	private void dadosFormularioParaCarro() {
+		try {
+			MCombustivel mcombustivel = new MCombustivel();
+			MCondutor mcondutor = new MCondutor();
+
+			mcondutor.setNomeCompleto(cboxCondutorCar.getSelectedItem().toString());
+			mcondutor = DCondutor.GetIdByNomeCompleto(mcondutor);
+			CARRO.setCon_codigo(mcondutor.getCodigo());
+			CARRO.setPlaca(txtPlaca.getText());
+			CARRO.setNumeroChassi(txtChassi.getText());
+			CARRO.setRenavam(txtRenavam.getText());
+			CARRO.setMarca(txtMarca.getText());
+			CARRO.setModelo(txtModelo.getText());
+			mcombustivel.setDescricao(cboxTipoCombustivel.getSelectedItem().toString());
+			mcombustivel = DCombustivel.GetIdByDescricao(mcombustivel);
+			CARRO.setCom_codigo(mcombustivel.getCodigo());
+			CARRO.setAnoFabricacao(Integer.parseInt(txtAnoFabricacao.getText()));
+			CARRO.setAnoModelo(Integer.parseInt(txtAnoModelo.getText()));
+			CARRO.setQtdPortas(Integer.parseInt(txtQtdPortas.getText()));
+			CARRO.setQtdPassageiros(Integer.parseInt(txtQtdPassageiros.getText()));
+			CARRO.setCapacidadeTanque(Integer.parseInt(txtCapTanque.getText()));
+			CARRO.setDescricao(txtaDescCadCar.getText());
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(this, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+		}
+	}
 
 	// DEFINE O ACESSO AOS CAMPOS E BOTÕES DE ACORDO COM O MODO DO FORMULÁRIO
 	private void alterarCampos() {
-
-	}
-
-	public static void main(String[] args) {
-		javax.swing.SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				JFrame frame = null;
-				try {
-					frame = new VWCadastroCarro(VWCadastroCarro.INSERIR);
-				} catch (ParseException e) {
-					e.printStackTrace();
-				}
-				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				frame.setVisible(true);
-			}
-		});
+		switch(MODO) {
+			case INSERIR:
+				txtPlaca.setEditable(true);
+				txtChassi.setEditable(true);
+				txtRenavam.setEditable(true);
+				cboxCondutorCar.setEnabled(true);
+				txtMarca.setEditable(true);
+				txtModelo.setEditable(true);
+				cboxTipoCombustivel.setEnabled(true);
+				txtAnoFabricacao.setEditable(true);
+				txtAnoModelo.setEditable(true);
+				txtQtdPortas.setEditable(true);
+				txtQtdPassageiros.setEditable(true);
+				txtCapTanque.setEditable(true);
+				txtaDescCadCar.setEditable(true);
+				
+				btnAlterar.setEnabled(false);
+				btnExcluir.setEnabled(false);
+				btnFechar.setEnabled(true);
+				
+				btnSalvar.setVisible(true);
+				btnIncluir.setVisible(false);
+				break;
+			case ALTERAR:
+				txtPlaca.setEditable(true);
+				txtChassi.setEditable(true);
+				txtRenavam.setEditable(true);
+				cboxCondutorCar.setEnabled(true);
+				txtMarca.setEditable(true);
+				txtModelo.setEditable(true);
+				cboxTipoCombustivel.setEnabled(true);
+				txtAnoFabricacao.setEditable(true);
+				txtAnoModelo.setEditable(true);
+				txtQtdPortas.setEditable(true);
+				txtQtdPassageiros.setEditable(true);
+				txtCapTanque.setEditable(true);
+				txtaDescCadCar.setEditable(true);
+				
+				btnAlterar.setEnabled(false);
+				btnExcluir.setEnabled(false);
+				btnFechar.setEnabled(true);
+				
+				btnSalvar.setVisible(true);
+				btnIncluir.setVisible(false);
+				break;
+			case VISUALIZAR:
+				txtPlaca.setEditable(false);
+				txtChassi.setEditable(false);
+				txtRenavam.setEditable(false);
+				cboxCondutorCar.setEnabled(false);
+				txtMarca.setEditable(false);
+				txtModelo.setEditable(false);
+				cboxTipoCombustivel.setEnabled(false);
+				txtAnoFabricacao.setEditable(false);
+				txtAnoModelo.setEditable(false);
+				txtQtdPortas.setEditable(false);
+				txtQtdPassageiros.setEditable(false);
+				txtCapTanque.setEditable(false);
+				txtaDescCadCar.setEditable(false);
+				
+				btnAlterar.setEnabled(true);
+				btnExcluir.setEnabled(true);
+				btnFechar.setEnabled(true);
+				
+				btnSalvar.setVisible(false);
+				btnIncluir.setVisible(true);
+				break;
+		}
 	}
 }
