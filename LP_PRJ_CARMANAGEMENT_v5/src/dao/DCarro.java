@@ -50,6 +50,8 @@ public class DCarro {
 			rs = stmt.executeQuery();
 			
 			if(rs.next()){
+				c.setCodigo(rs.getInt("car_codigo"));
+				c.setCon_codigo(rs.getInt("car_con_codigo"));
 				c.setMarca(rs.getString("car_marca"));
 				c.setModelo(rs.getString("car_modelo"));
 				c.setPlaca(rs.getString("car_placa"));
@@ -70,7 +72,7 @@ public class DCarro {
 			con.close();
 			return c;
 		} catch (Exception e) {
-			throw new Exception("Erro ao Buscar Carro!");
+			throw new Exception(e);
 		}
 	}
 	

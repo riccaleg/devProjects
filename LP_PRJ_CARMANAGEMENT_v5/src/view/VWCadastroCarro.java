@@ -119,26 +119,6 @@ public class VWCadastroCarro extends JFrame {
 			return;
 		}
 		
-		MODO = modoFormulario;
-		CARRO = DCarro.BuscarCodigo(mcarro);
-		
-		switch(MODO) {
-			case INSERIR:
-				limparItensTela();
-				alterarCampos();
-				break;
-			case ALTERAR:
-				limparItensTela();
-				dadosCarroParaFormulario();
-				alterarCampos();
-				break;
-			case VISUALIZAR:
-				limparItensTela();
-				dadosCarroParaFormulario();
-				alterarCampos();
-				break;
-		}
-
 		// IMPEDINDO REDIMENSIONAMENTO
 		this.setResizable(false);
 
@@ -264,23 +244,43 @@ public class VWCadastroCarro extends JFrame {
 				}
 			}
 		});
+		
+		MODO = modoFormulario;
+		
+		switch(MODO) {
+			case INSERIR:
+				limparItensTela();
+				alterarCampos();
+				break;
+			case ALTERAR:
+				CARRO = DCarro.BuscarCodigo(mcarro);
+				limparItensTela();
+				dadosCarroParaFormulario();
+				alterarCampos();
+				break;
+			case VISUALIZAR:
+				CARRO = DCarro.BuscarCodigo(mcarro);
+				limparItensTela();
+				dadosCarroParaFormulario();
+				alterarCampos();
+				break;
+		}
 
+		
 		dadosCarroParaFormulario();
 		
 		this.setVisible(true);
 	}
 
-	public VWCadastroCarro(int modoFormulario) throws ParseException {
+	public VWCadastroCarro(int modoFormulario) throws Exception {
 		super("CAR MANAGEMENT | Cadastro de Carros");
 		
-		/*
 		if (modoFormulario != INSERIR) {
 			JOptionPane.showMessageDialog(this, "Erro na chamada do formulário, contate o desenvolvedor!", "Erro",
 					JOptionPane.ERROR_MESSAGE);
 			this.dispose();
 			return;
 		}
-		*/
 
 		MODO = modoFormulario;
 		
@@ -451,6 +451,7 @@ public class VWCadastroCarro extends JFrame {
 
 		// ADICIONANDO BOTÕES NA TELA
 		getContentPane().add(btnSalvar);
+		getContentPane().add(btnIncluir);
 		getContentPane().add(btnAlterar);
 		getContentPane().add(btnExcluir);
 		getContentPane().add(btnFechar);
@@ -1041,8 +1042,10 @@ public class VWCadastroCarro extends JFrame {
 				
 				btnAlterar.setEnabled(false);
 				btnExcluir.setEnabled(false);
-				btnSalvar.setEnabled(true);
 				btnFechar.setEnabled(true);
+				
+				btnSalvar.setVisible(true);
+				btnIncluir.setVisible(false);
 				break;
 			case ALTERAR:
 				txtPlaca.setEditable(true);
@@ -1061,8 +1064,10 @@ public class VWCadastroCarro extends JFrame {
 				
 				btnAlterar.setEnabled(false);
 				btnExcluir.setEnabled(false);
-				btnSalvar.setEnabled(true);
 				btnFechar.setEnabled(true);
+				
+				btnSalvar.setVisible(true);
+				btnIncluir.setVisible(false);
 				break;
 			case VISUALIZAR:
 				txtPlaca.setEditable(false);
@@ -1081,24 +1086,11 @@ public class VWCadastroCarro extends JFrame {
 				
 				btnAlterar.setEnabled(true);
 				btnExcluir.setEnabled(true);
-				btnSalvar.setEnabled(true);
 				btnFechar.setEnabled(true);
+				
+				btnSalvar.setVisible(false);
+				btnIncluir.setVisible(true);
 				break;
 		}
-	}
-
-	public static void main(String[] args) {
-		javax.swing.SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				JFrame frame = null;
-				try {
-					frame = new VWCadastroCarro(VWCadastroCarro.INSERIR);
-				} catch (ParseException e) {
-					e.printStackTrace();
-				}
-				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				frame.setVisible(true);
-			}
-		});
 	}
 }

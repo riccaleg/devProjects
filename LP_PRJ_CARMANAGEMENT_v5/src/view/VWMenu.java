@@ -24,6 +24,8 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
+import model.MCarro;
+
 public class VWMenu extends JFrame {
 
 	/**
@@ -301,7 +303,13 @@ public class VWMenu extends JFrame {
 
 	// CADASTROS
 	private void menuBarItemCadCar() throws ParseException, SQLException {
-		JFVWCadCarros = new VWCadastroCarro(VWCadastroCarro.ALTERAR);
+		try {
+			MCarro c = new MCarro();
+			c.setCodigo(2);
+			JFVWCadCarros = new VWCadastroCarro(VWCadastroCarro.VISUALIZAR, c);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(this, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+		}
 	}
 
 	private void menuBarItemCadAba() throws ParseException, SQLException {
