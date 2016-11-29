@@ -75,7 +75,7 @@ public class DCarro {
 			return c;
 		}
 	}
-	
+	//MÉTODO PARA EXCLSÃO
 	public static void Excluir(MCarro c) throws Exception{
 		try {
 			Connection con = Conexao.getConexao();
