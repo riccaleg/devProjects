@@ -303,13 +303,13 @@ public class VWMenu extends JFrame {
 
 	// CADASTROS
 	private void menuBarItemCadCar() throws ParseException, SQLException {
-<<<<<<< HEAD
+
 		//if (JFVWCadCarros == null)
 			JFVWCadCarros = new VWCadastroCarro(VWCadastroCarro.ALTERAR);
 		//JFVWCadCarros.setVisible(true);
 		;
 
-=======
+
 		try {
 			MCarro c = new MCarro();
 			c.setCodigo(2);
@@ -317,7 +317,7 @@ public class VWMenu extends JFrame {
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(this, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
 		}
->>>>>>> branch 'devProjet' of https://github.com/wsamuelseles/devProjects/
+
 	}
 
 	private void menuBarItemCadAba() throws ParseException, SQLException {

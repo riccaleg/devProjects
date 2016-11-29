@@ -119,7 +119,7 @@ public class VWCadastroCarro extends JFrame {
 			return;
 		}
 		
-<<<<<<< HEAD
+
 
 
 		// CONFIGURA O MODO DE FUNCIONAMENTO DO FORMULÁRIO
@@ -127,8 +127,6 @@ public class VWCadastroCarro extends JFrame {
 		MODO = modoFormulario;
 		alterarCampos();
 
-=======
->>>>>>> branch 'devProjet' of https://github.com/wsamuelseles/devProjects/
 		// IMPEDINDO REDIMENSIONAMENTO
 		this.setResizable(false);
 
@@ -255,8 +253,7 @@ public class VWCadastroCarro extends JFrame {
 			}
 		});
 		
-<<<<<<< HEAD
-=======
+
 		MODO = modoFormulario;
 		
 		switch(MODO) {
@@ -279,27 +276,20 @@ public class VWCadastroCarro extends JFrame {
 		}
 
 		
->>>>>>> branch 'devProjet' of https://github.com/wsamuelseles/devProjects/
+
 		dadosCarroParaFormulario();
-<<<<<<< HEAD
-=======
-		
->>>>>>> branch 'devProjet' of https://github.com/wsamuelseles/devProjects/
+
 		this.setVisible(true);
 	}
 
-<<<<<<< HEAD
+
 	/**
 	 * @wbp.parser.constructor
 	 */
 	public VWCadastroCarro(int modoFormulario) throws ParseException {
 		super("CAR MANAGEMENT | Cadastro de Carros - Alteração/Visualização");
 
-=======
-	public VWCadastroCarro(int modoFormulario) throws Exception {
-		super("CAR MANAGEMENT | Cadastro de Carros");
-		
->>>>>>> branch 'devProjet' of https://github.com/wsamuelseles/devProjects/
+	
 		if (modoFormulario != INSERIR) {
 			JOptionPane.showMessageDialog(this, "Erro na chamada do formulário, contate o desenvolvedor!", "Erro",
 					JOptionPane.ERROR_MESSAGE);
@@ -456,11 +446,7 @@ public class VWCadastroCarro extends JFrame {
 				}
 			}
 		});
-<<<<<<< HEAD
-		
-=======
 
->>>>>>> branch 'devProjet' of https://github.com/wsamuelseles/devProjects/
 		this.setVisible(true);
 	}
 
