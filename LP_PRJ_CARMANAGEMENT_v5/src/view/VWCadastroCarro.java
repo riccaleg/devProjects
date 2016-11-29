@@ -97,6 +97,7 @@ public class VWCadastroCarro extends JFrame {
 	// DECLARANDO BOTÕES DE AÇÃO
 	// Buttons
 	private JButton btnSalvar = new JButton("Salvar");
+	private JButton btnIncluir = new JButton("Incluir");
 	private JButton btnAlterar = new JButton("Alterar");
 	private JButton btnExcluir = new JButton("Excluir");
 	private JButton btnFechar = new JButton("Fechar");
@@ -111,17 +112,32 @@ public class VWCadastroCarro extends JFrame {
 	public VWCadastroCarro(int modoFormulario, MCarro mcarro) throws Exception {
 		super("CAR MANAGEMENT | Cadastro de Carros");
 
-		if (modoFormulario == INSERIR || mcarro == null || mcarro.getCodigo() <= 0) {
+		if (mcarro == null || mcarro.getCodigo() <= 0) {
 			JOptionPane.showMessageDialog(this, "Erro na chamada do formulário, contate o desenvolvedor!", "Erro",
 					JOptionPane.ERROR_MESSAGE);
 			this.dispose();
 			return;
 		}
-
-		// CONFIGURA O MODO DE FUNCIONAMENTO DO FORMULÁRIO
-		CARRO = DCarro.BuscarCodigo(mcarro);
+		
 		MODO = modoFormulario;
-		alterarCampos();
+		CARRO = DCarro.BuscarCodigo(mcarro);
+		
+		switch(MODO) {
+			case INSERIR:
+				limparItensTela();
+				alterarCampos();
+				break;
+			case ALTERAR:
+				limparItensTela();
+				dadosCarroParaFormulario();
+				alterarCampos();
+				break;
+			case VISUALIZAR:
+				limparItensTela();
+				dadosCarroParaFormulario();
+				alterarCampos();
+				break;
+		}
 
 		// IMPEDINDO REDIMENSIONAMENTO
 		this.setResizable(false);
@@ -671,6 +687,10 @@ public class VWCadastroCarro extends JFrame {
 		// BOTÃO "SALVAR"
 		btnSalvar.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		btnSalvar.setBounds(216, 489, 76, 23);
+		
+		//BOTÃO "NOVO"
+		btnIncluir.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		btnIncluir.setBounds(216, 489, 76, 23);
 
 		// BOTÃO "ALTERAR"
 		btnAlterar.setFont(new Font("Segoe UI", Font.PLAIN, 12));
@@ -690,6 +710,7 @@ public class VWCadastroCarro extends JFrame {
 		ToolTipManager.sharedInstance().setInitialDelay(100);
 		ToolTipManager.sharedInstance().setDismissDelay(8000);
 		btnSalvar.setToolTipText("Salvar dados");
+		btnIncluir.setToolTipText("Novo Carro");
 		btnAlterar.setToolTipText("Alterar dados");
 		btnExcluir.setToolTipText("Excluir dados");
 		btnFechar.setToolTipText("Fechar módulo");
@@ -724,6 +745,13 @@ public class VWCadastroCarro extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				btnSalvar_click();
+			}
+		});
+		
+		btnIncluir.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				btnIncluir_click();
 			}
 		});
 
@@ -853,6 +881,12 @@ public class VWCadastroCarro extends JFrame {
 			lblSituacao.setText(e.getMessage());
 		}
 
+	}
+	
+	private void btnIncluir_click() {
+		limparItensTela();
+		MODO = INSERIR;
+		alterarCampos();
 	}
 
 	private void limparItensTela() {
