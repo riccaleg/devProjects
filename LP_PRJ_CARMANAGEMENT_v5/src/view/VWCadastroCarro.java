@@ -959,7 +959,8 @@ public class VWCadastroCarro extends JFrame {
 		}
 
 	}
-
+	
+	// MÉTODO PARA POPULAR ITENS DO COMBOBOX
 	private void popularCboxTipoCombustivel() {
 		try {
 			cboxTipoCombustivel.setModel(DCombustivel.ListarComboBox());
@@ -1135,11 +1136,54 @@ public class VWCadastroCarro extends JFrame {
 				btnIncluir.setVisible(false);
 				break;
 			case ALTERAR:
+				limparItensTela();
 				
 				
+				//CAMPOS
+				txtPlaca.setEditable(true);
+				txtChassi.setEditable(true);
+				txtRenavam.setEditable(true);
+				cboxCondutorCar.setEnabled(true);
+				txtMarca.setEditable(true);
+				txtModelo.setEditable(true);
+				cboxTipoCombustivel.setEnabled(true);
+				txtAnoFabricacao.setEditable(true);
+				txtAnoModelo.setEditable(true);
+				txtQtdPortas.setEditable(true);
+				txtQtdPassageiros.setEditable(true);
+				txtCapTanque.setEditable(true);
+				txtaDescCadCar.setEditable(true);
+				
+				btnAlterar.setEnabled(false);
+				btnExcluir.setEnabled(false);
+				btnFechar.setEnabled(true);
+				
+				btnSalvar.setVisible(true);
+				btnIncluir.setVisible(false);
 				break;
 			case VISUALIZAR:
 				
+				//CAMPOS
+				txtPlaca.setEditable(false);
+				txtChassi.setEditable(false);
+				txtRenavam.setEditable(false);
+				cboxCondutorCar.setEnabled(false);
+				txtMarca.setEditable(false);
+				txtModelo.setEditable(false);
+				cboxTipoCombustivel.setEnabled(false);
+				txtAnoFabricacao.setEditable(false);
+				txtAnoModelo.setEditable(false);
+				txtQtdPortas.setEditable(false);
+				txtQtdPassageiros.setEditable(false);
+				txtCapTanque.setEditable(false);
+				txtaDescCadCar.setEditable(false);
+				
+				btnAlterar.setEnabled(true);
+				btnExcluir.setEnabled(true);
+				btnFechar.setEnabled(true);
+				
+				btnSalvar.setVisible(false);
+				btnIncluir.setVisible(true);
 				break;
 		}
 	}
