@@ -114,7 +114,11 @@ public class VWCadastroCarro extends JFrame {
 		if (modoFormulario == INSERIR || mcarro == null || mcarro.getCodigo() <= 0) {
 			JOptionPane.showMessageDialog(this, "Erro na chamada do formulário, contate o desenvolvedor!", "Erro",
 					JOptionPane.ERROR_MESSAGE);
+			this.dispose();
+			return;
 		}
+		
+
 
 		// CONFIGURA O MODO DE FUNCIONAMENTO DO FORMULÁRIO
 		CARRO = DCarro.BuscarCodigo(mcarro);
@@ -246,8 +250,9 @@ public class VWCadastroCarro extends JFrame {
 				}
 			}
 		});
-
+		
 		dadosCarroParaFormulario();
+		this.setVisible(true);
 	}
 
 	public VWCadastroCarro(int modoFormulario) throws ParseException {
@@ -256,6 +261,8 @@ public class VWCadastroCarro extends JFrame {
 		if (modoFormulario != INSERIR) {
 			JOptionPane.showMessageDialog(this, "Erro na chamada do formulário, contate o desenvolvedor!", "Erro",
 					JOptionPane.ERROR_MESSAGE);
+			this.dispose();
+			return;
 		}
 
 		MODO = modoFormulario;
@@ -405,7 +412,8 @@ public class VWCadastroCarro extends JFrame {
 				}
 			}
 		});
-
+		
+		this.setVisible(true);
 	}
 
 	private void propriedadesItensTela() {
