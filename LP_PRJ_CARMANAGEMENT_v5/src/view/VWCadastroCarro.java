@@ -898,13 +898,14 @@ public class VWCadastroCarro extends JFrame {
 		}
 
 	}
-	
+	//MÉTODO PARA O BOTÃO INCLUIR
 	private void btnIncluir_click() {
 		limparItensTela();
 		MODO = INSERIR;
 		alterarCampos();
 	}
 
+	//MÉTODO PARA IMPAR ITENS DA TELA
 	private void limparItensTela() {
 		txtPlaca.setText("");
 		txtChassi.setText("");
