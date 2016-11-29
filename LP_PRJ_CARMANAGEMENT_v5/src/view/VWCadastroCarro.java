@@ -110,6 +110,7 @@ public class VWCadastroCarro extends JFrame {
 	private JPanel pnlDocumentacao = new JPanel();
 	private JPanel pnlCaracteristicas = new JPanel();
 
+	//INSTANCIANDO CONSTRUTOR
 	public VWCadastroCarro(int modoFormulario, MCarro mcarro) throws Exception {
 		super("CAR MANAGEMENT | Cadastro de Carros - Inclusão");
 
@@ -1106,7 +1107,7 @@ public class VWCadastroCarro extends JFrame {
 				break;
 		}
 	}
-	
+	//MÉTODO PARA SETOR MODO DE UTILIZAÇÃO
 	private void setModo(int modo) {
 		MODO = modo;
 		
