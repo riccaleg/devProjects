@@ -942,7 +942,8 @@ public class VWCadastroCarro extends JFrame {
 		}
 
 	}
-
+	
+	// MÉTODO PARA POPULAR ITENS DO COMBOBOX
 	private void popularCboxTipoCombustivel() {
 		try {
 			cboxTipoCombustivel.setModel(DCombustivel.ListarComboBox());
