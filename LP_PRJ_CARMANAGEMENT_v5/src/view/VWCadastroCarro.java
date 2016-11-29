@@ -109,7 +109,7 @@ public class VWCadastroCarro extends JFrame {
 	private JPanel pnlCaracteristicas = new JPanel();
 
 	public VWCadastroCarro(int modoFormulario, MCarro mcarro) throws Exception {
-		super("CAR MANAGEMENT | Cadastro de Carros");
+		super("CAR MANAGEMENT | Cadastro de Carros - Inclusão");
 
 		if (modoFormulario == INSERIR || mcarro == null || mcarro.getCodigo() <= 0) {
 			JOptionPane.showMessageDialog(this, "Erro na chamada do formulário, contate o desenvolvedor!", "Erro",
@@ -255,8 +255,11 @@ public class VWCadastroCarro extends JFrame {
 		this.setVisible(true);
 	}
 
+	/**
+	 * @wbp.parser.constructor
+	 */
 	public VWCadastroCarro(int modoFormulario) throws ParseException {
-		super("CAR MANAGEMENT | Cadastro de Carros");
+		super("CAR MANAGEMENT | Cadastro de Carros - Alteração/Visualização");
 
 		if (modoFormulario != INSERIR) {
 			JOptionPane.showMessageDialog(this, "Erro na chamada do formulário, contate o desenvolvedor!", "Erro",
