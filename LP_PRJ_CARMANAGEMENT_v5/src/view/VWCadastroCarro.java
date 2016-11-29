@@ -925,19 +925,14 @@ public class VWCadastroCarro extends JFrame {
 
 	// MÉTODO PARA ALTERAÇÂO DE DADOS | BOTÃO "ALTERAR"
 	private void btnAlterar_click() {
-		try {
-
-			int resp = JOptionPane.showConfirmDialog(this, "Confirma alteração?", "Alteração",
-					JOptionPane.YES_NO_OPTION);
-			if (resp == JOptionPane.YES_OPTION) {
-				// CHAMADA DA ALTERAÇÃO
-				// DÚVIDAS DE COMO COLOCAR MENSAGEM DE SUCESSO NA ALTERAÇÃO
-			}
-
-		} catch (Exception e) {
-			lblSituacao.setText(e.getMessage());
-
-		}
+		MODO = ALTERAR;
+		alterarCampos();
+	}
+	
+	// MÉTODO PARA CANCELAMENTO DE OPERAÇÕES
+	private void btnCancelar_click() {
+		limparItensTela();
+		MODO = VISUALIZAR;
 	}
 
 	// MÉTODO PARA EXCLUSÃO DE DADOS | BOTÃO "EXCLUIR"
@@ -947,8 +942,7 @@ public class VWCadastroCarro extends JFrame {
 			int resp = JOptionPane.showConfirmDialog(this, "Confirma a exclusão?", "Exclusão",
 					JOptionPane.YES_NO_OPTION);
 			if (resp == JOptionPane.YES_OPTION) {
-				// CHAMADA DA EXCLUSÃO
-				// DÚVIDAS DE COMO COLOCAR MENSAGEM DE SUCESSO NA EXCLUSÃO
+				DCarro.Excluir(CARRO);
 			}
 
 		} catch (Exception e) {
@@ -1106,6 +1100,45 @@ public class VWCadastroCarro extends JFrame {
 				
 				btnSalvar.setVisible(false);
 				btnIncluir.setVisible(true);
+				break;
+		}
+	}
+	
+	private void setModo(int modo) {
+		MODO = modo;
+		
+		switch(modo){
+			case INSERIR:
+				limparItensTela();
+				
+				//CAMPOS
+				txtPlaca.setEditable(true);
+				txtChassi.setEditable(true);
+				txtRenavam.setEditable(true);
+				cboxCondutorCar.setEnabled(true);
+				txtMarca.setEditable(true);
+				txtModelo.setEditable(true);
+				cboxTipoCombustivel.setEnabled(true);
+				txtAnoFabricacao.setEditable(true);
+				txtAnoModelo.setEditable(true);
+				txtQtdPortas.setEditable(true);
+				txtQtdPassageiros.setEditable(true);
+				txtCapTanque.setEditable(true);
+				txtaDescCadCar.setEditable(true);
+				
+				btnAlterar.setEnabled(false);
+				btnExcluir.setEnabled(false);
+				btnFechar.setEnabled(true);
+				
+				btnSalvar.setVisible(true);
+				btnIncluir.setVisible(false);
+				break;
+			case ALTERAR:
+				
+				
+				break;
+			case VISUALIZAR:
+				
 				break;
 		}
 	}

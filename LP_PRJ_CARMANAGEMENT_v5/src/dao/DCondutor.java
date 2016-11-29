@@ -62,7 +62,7 @@ public class DCondutor {
 			con.close();
 			return c;
 		} catch (Exception e) {
-			throw new Exception("Erro ao Buscar Condutor!");
+			throw new Exception(e);
 		}
 	}
 	
